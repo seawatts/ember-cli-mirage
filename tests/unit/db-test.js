@@ -208,6 +208,16 @@ test('it can update a record by id', function(assert) {
   assert.deepEqual(ganon, {id: 3, name: 'Ganondorf', evil: false});
 });
 
+test('it can update multiple records by ids', function(assert) {
+  db.contacts.update({evil: true}, [1, 2]);
+  var link = db.contacts.find(1);
+  var zelda = db.contacts.find(2);
+
+  assert.equal(link.evil, true);
+  assert.equal(zelda.evil, true);
+});
+
+
 test('it can update records by query', function(assert) {
   db.contacts.update({name: 'Sam'}, {evil: false});
 
@@ -246,6 +256,14 @@ test('it can remove a single record', function(assert) {
   assert.deepEqual(db.contacts, [
     {id: 2, name: 'Zelda', evil: false},
     {id: 3, name: 'Ganon', evil: true},
+  ]);
+});
+
+test('it can remove multiple records by ids', function(assert) {
+  db.contacts.remove([1, 2]);
+
+  assert.deepEqual(db.contacts, [
+    {id: 3, name: 'Ganon', evil: true}
   ]);
 });
 
