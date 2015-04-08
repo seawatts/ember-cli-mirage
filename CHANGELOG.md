@@ -1,5 +1,11 @@
 # Ember CLI Mirage Changelog
 
+## next
+
+Changes:
+  - [BREAKING CHANGE] #63 db.update(target, attrs) is now
+    db.update(attrs, target)
+
 ## 0.0.24
 
 Update notes: The config options `force` or `disable` aren't support anymore, please use `enabled` as explained here: https://github.com/samselikoff/ember-cli-mirage/wiki/Configuration#enabled
