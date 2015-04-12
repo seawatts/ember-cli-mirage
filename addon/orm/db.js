@@ -113,6 +113,7 @@ export default function() {
 
     } else {
       var record = this._findRecord(collection, ids);
+      if (!record) { return null; }
       return JSON.parse(JSON.stringify(record)); // return a copy
     }
   };
